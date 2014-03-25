@@ -4,6 +4,8 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Rect.hpp>
 
+namespace zmc
+{
 class SFMLUtilities
 {
 public:
@@ -69,5 +71,5 @@ public:
 private:
     sf::Vector2f mDerivative;
 };
-
+}
 #endif // SFMLUTILITIES_H

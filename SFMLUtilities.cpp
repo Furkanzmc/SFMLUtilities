@@ -2,8 +2,8 @@
 #include <random>
 #include <iostream>
 
-using namespace std;
-
+namespace zmc
+{
 SFMLUtilities::SFMLUtilities()
 {
 }
@@ -40,7 +40,7 @@ const std::vector<int> SFMLUtilities::getDigits(int n)
         number -= mod;
         number /= 10;
     }
-    for (unsigned int i = array.size() - 1;i < array.size();i--) {
+    for (unsigned int i = array.size() - 1; i < array.size(); i--) {
         array2.push_back(array.at(i));
     }
     return array2;
@@ -56,7 +56,8 @@ const sf::IntRect SFMLUtilities::getScaledTextureRect(sf::Sprite &sprite)
     return intRect;
 }
 
-int SFMLUtilities::generateRandomNumber(int start, int end, int seed) {
+int SFMLUtilities::generateRandomNumber(int start, int end, int seed)
+{
     std::random_device rd; // obtain a random number from hardware
     std::mt19937 eng(seed == 0 ? rd() : seed); // seed the generator
     std::uniform_int_distribution<> distr(start, end); // define the range
@@ -100,4 +101,5 @@ float SFMLUtilities::toRadian(float degree)
 {
     const float PI = 3.14159265f;
     return (degree * PI / 180);
+}
 }
