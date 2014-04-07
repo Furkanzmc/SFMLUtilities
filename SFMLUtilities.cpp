@@ -107,4 +107,19 @@ float SFMLUtilities::distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vec
 {
     return std::sqrt(std::pow((firstVector.x - secondVector.x), 2) + std::pow((firstVector.y - secondVector.y), 2));
 }
+
+float SFMLUtilities::getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector)
+{
+    float rotation = 0;
+    float h = zmc::SFMLUtilities::distanceBetweenTwoVectors(firstVector, secondVector);
+    if(secondVector.x > firstVector.x) {
+        float x = std::abs(firstVector.x - secondVector.x);
+        rotation = zmc::SFMLUtilities::toDegree(std::sin(x / h));
+    }
+    else {
+        float y = std::abs(firstVector.y - secondVector.y);
+        rotation = zmc::SFMLUtilities::toDegree(std::cos(y / h));
+    }
+    return rotation;
+}
 }
