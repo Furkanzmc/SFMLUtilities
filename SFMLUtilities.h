@@ -67,6 +67,7 @@ public:
     static float toBox2DCoordinate(float sfmlCoord);
     static float toDegree(float radian);
     static float toRadian(float degree);
+    static float distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
 
 private:
     sf::Vector2f mDerivative;

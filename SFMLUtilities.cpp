@@ -102,4 +102,9 @@ float SFMLUtilities::toRadian(float degree)
     const float PI = 3.14159265f;
     return (degree * PI / 180);
 }
+
+float SFMLUtilities::distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector)
+{
+    return std::sqrt(std::pow((firstVector.x - secondVector.x), 2) + std::pow((firstVector.y - secondVector.y), 2));
+}
 }
