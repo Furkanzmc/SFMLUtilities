@@ -111,14 +111,9 @@ float SFMLUtilities::distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vec
 float SFMLUtilities::getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector)
 {
     float rotation = 0;
-    float h = zmc::SFMLUtilities::distanceBetweenTwoVectors(firstVector, secondVector);
-    if(secondVector.x > firstVector.x) {
-        float x = std::abs(firstVector.x - secondVector.x);
-        rotation = zmc::SFMLUtilities::toDegree(std::sin(x / h));
-    }
-    else {
-        float y = std::abs(firstVector.y - secondVector.y);
-        rotation = zmc::SFMLUtilities::toDegree(std::cos(y / h));
+    rotation = (float) toDegree(std::atan2(firstVector.x - secondVector.x, firstVector.y - secondVector.y));
+    if (rotation < 0) {
+        rotation += 360;
     }
     return rotation;
 }
