@@ -29,7 +29,7 @@ public:
      * @param sprite
      * @return sf::Vector2f
      */
-    static sf::Vector2f getScaledSize(sf::Sprite &sprite, const sf::IntRect &customRect = sf::IntRect(0, 0, 0, 0));
+    static sf::Vector2f getScaledSize(const sf::Sprite &sprite);
     /**
      * @brief Returns a vector<int> with the numbers
      */
@@ -41,7 +41,7 @@ public:
      * @param sprite
      * @return Scaled sf::IntRect
      */
-    static const sf::IntRect getScaledTextureRect(sf::Sprite &sprite);
+    static const sf::IntRect getScaledTextureRect(const sf::Sprite &sprite);
 
     /**
      * @brief Returns the generated random number using Mersenne-Twister algorithm
@@ -69,6 +69,7 @@ public:
     static float toRadian(float degree);
     static float distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
     static float getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
+    static bool intersects(const sf::Sprite *firstSprite, const sf::Sprite *secondSprite);
 
 private:
     sf::Vector2f mDerivative;

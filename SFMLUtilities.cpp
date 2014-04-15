@@ -15,13 +15,13 @@ sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Sprit
     return vector;
 }
 
-sf::Vector2f SFMLUtilities::getScaledSize(sf::Sprite &sprite, const sf::IntRect &customRect)
+sf::Vector2f SFMLUtilities::getScaledSize(const sf::Sprite &sprite/*, const sf::IntRect &customRect*/)
 {
     sf::Vector2f vector;
-    if (customRect.height > 0 || customRect.width > 0)
-        vector = sf::Vector2f(customRect.width  * sprite.getScale().x , customRect.height * sprite.getScale().y);
-    else
-        vector = sf::Vector2f(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
+//    if (customRect.height > 0 || customRect.width > 0)
+//        vector = sf::Vector2f(customRect.width  * sprite.getScale().x , customRect.height * sprite.getScale().y);
+//    else
+    vector = sf::Vector2f(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
     return vector;
 }
 
@@ -46,7 +46,7 @@ const std::vector<int> SFMLUtilities::getDigits(int n)
     return array2;
 }
 
-const sf::IntRect SFMLUtilities::getScaledTextureRect(sf::Sprite &sprite)
+const sf::IntRect SFMLUtilities::getScaledTextureRect(const sf::Sprite &sprite)
 {
     sf::IntRect intRect;
     intRect.top = (int)sprite.getPosition().y;
@@ -116,5 +116,14 @@ float SFMLUtilities::getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vec
         rotation += 360;
     }
     return rotation;
+}
+
+bool SFMLUtilities::intersects(const sf::Sprite *firstSprite, const sf::Sprite *secondSprite)
+{
+    sf::IntRect firstRect(firstSprite->getPosition().x, firstSprite->getPosition().y
+                          , getScaledSize(*firstSprite).x, getScaledSize(*firstSprite).y);
+    sf::IntRect secondRect(secondSprite->getPosition().x, secondSprite->getPosition().y
+                           , getScaledSize(*secondSprite).x, getScaledSize(*secondSprite).y);
+    return firstRect.intersects(secondRect);
 }
 }
