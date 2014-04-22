@@ -9,7 +9,6 @@ namespace zmc
 class SFMLUtilities
 {
 public:
-    typedef sf::Vector2f Derivative;
     /**
      * @brief It's the position of the sprite
      */
@@ -70,9 +69,6 @@ public:
     static float distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
     static float getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
     static bool intersects(const sf::Sprite *firstSprite, const sf::Sprite *secondSprite);
-
-private:
-    sf::Vector2f mDerivative;
 };
 }
 #endif // SFMLUTILITIES_H
