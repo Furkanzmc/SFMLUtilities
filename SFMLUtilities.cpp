@@ -120,10 +120,10 @@ float SFMLUtilities::getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vec
 
 bool SFMLUtilities::intersects(const sf::Sprite *firstSprite, const sf::Sprite *secondSprite)
 {
-    sf::IntRect firstRect(firstSprite->getPosition().x, firstSprite->getPosition().y
-                          , getScaledSize(*firstSprite).x, getScaledSize(*firstSprite).y);
-    sf::IntRect secondRect(secondSprite->getPosition().x, secondSprite->getPosition().y
-                           , getScaledSize(*secondSprite).x, getScaledSize(*secondSprite).y);
+    sf::IntRect firstRect((int)firstSprite->getPosition().x, (int)firstSprite->getPosition().y
+                          , (int)getScaledSize(*firstSprite).x, (int)getScaledSize(*firstSprite).y);
+    sf::IntRect secondRect((int)secondSprite->getPosition().x, (int)secondSprite->getPosition().y
+                           , (int)getScaledSize(*secondSprite).x, (int)getScaledSize(*secondSprite).y);
     return firstRect.intersects(secondRect);
 }
 }
