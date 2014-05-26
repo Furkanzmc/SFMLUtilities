@@ -46,10 +46,9 @@ public:
      * @brief Returns the generated random number using Mersenne-Twister algorithm
      * @param start --> Starting number for the generator. This numer is included
      * @param end --> End number for the generator. This numer is included
-     * @param seed --> The variable to seed the generator, default value is 0
      * @return Random number
      */
-    static int generateRandomNumber(int start, int end, int seed = 0);
+    static int generateRandomNumber(int start, int end);
 
     static sf::Vector2f getFitToAlignScale(sf::Vector2u textureSize, sf::Vector2u containerSize);
     /**
