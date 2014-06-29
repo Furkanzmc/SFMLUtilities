@@ -56,7 +56,7 @@ const sf::IntRect SFMLUtilities::getScaledTextureRect(const sf::Sprite &sprite)
 int SFMLUtilities::generateRandomNumber(int start, int end)
 {
     auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-    std::mt19937 eng(seed);
+    std::mt19937 eng((unsigned int)seed);
     std::uniform_int_distribution<> distr(start, end);
     return distr(eng);
 }
