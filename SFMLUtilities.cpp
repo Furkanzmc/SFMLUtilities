@@ -1,6 +1,6 @@
 #include "SFMLUtilities.h"
 #include <random>
-#include <iostream>
+#include <chrono>
 
 namespace zmc
 {
@@ -15,12 +15,9 @@ sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Sprit
     return vector;
 }
 
-sf::Vector2f SFMLUtilities::getScaledSize(const sf::Sprite &sprite/*, const sf::IntRect &customRect*/)
+sf::Vector2f SFMLUtilities::getScaledSize(const sf::Sprite &sprite)
 {
     sf::Vector2f vector;
-//    if (customRect.height > 0 || customRect.width > 0)
-//        vector = sf::Vector2f(customRect.width  * sprite.getScale().x , customRect.height * sprite.getScale().y);
-//    else
     vector = sf::Vector2f(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
     return vector;
 }
