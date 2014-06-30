@@ -15,10 +15,16 @@ sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Sprit
     return vector;
 }
 
-sf::Vector2f SFMLUtilities::getScaledSize(const sf::Sprite &sprite)
+sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Vector2u spriteSize)
 {
-    sf::Vector2f vector;
-    vector = sf::Vector2f(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
+    sf::Vector2f vector((int)parentSize.x / 2 - spriteSize.x / 2 , (int)parentSize.y / 2 - spriteSize.y / 2);
+    return vector;
+}
+
+sf::Vector2u SFMLUtilities::getScaledSize(const sf::Sprite &sprite)
+{
+    sf::Vector2u vector;
+    vector = sf::Vector2u(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
     return vector;
 }
 

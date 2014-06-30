@@ -24,11 +24,19 @@ public:
      */
     static sf::Vector2f getCenterPosition(sf::Vector2u parentSize, sf::Sprite &sprite);
     /**
+     * @brief Returns the center position of the screen relative to the sprite size. Be sure to provide
+     * scaled size of the sprite
+     * @param parentSize
+     * @param spriteSize
+     * @return
+     */
+    static sf::Vector2f getCenterPosition(sf::Vector2u parentSize, sf::Vector2u spriteSize);
+    /**
      * @brief Returns a sprite's scaled size
      * @param sprite
      * @return sf::Vector2f
      */
-    static sf::Vector2f getScaledSize(const sf::Sprite &sprite);
+    static sf::Vector2u getScaledSize(const sf::Sprite &sprite);
     /**
      * @brief Returns a vector<int> with the numbers
      */
