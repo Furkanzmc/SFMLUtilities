@@ -3,6 +3,8 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Rect.hpp>
+#include <random>
+#include <chrono>
 
 namespace zmc
 {
@@ -14,6 +16,7 @@ public:
      */
     typedef sf::Vector2f State;
 public:
+    SFMLUtilities(unsigned int seed);
     SFMLUtilities();
     /**
      * @brief Returns the center position of the screen relative to the sprite
@@ -56,7 +59,8 @@ public:
      * @param end --> End number for the generator. This numer is included
      * @return Random number
      */
-    static int generateRandomNumber(int start, int end);
+    int generateRandomNumber(int start, int end);
+    void setSeedForRandomNumberGeneration(unsigned int seed);
 
     static sf::Vector2f getFitToAlignScale(sf::Vector2u textureSize, sf::Vector2u containerSize);
     /**
@@ -76,6 +80,10 @@ public:
     static float distanceBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
     static float getAngleBetweenTwoVectors(sf::Vector2f firstVector, sf::Vector2f secondVector);
     static bool intersects(const sf::Sprite *firstSprite, const sf::Sprite *secondSprite);
+
+private:
+    unsigned int mSeed;
+    std::mt19937 eng;
 };
 }
 #endif // SFMLUTILITIES_H

@@ -1,10 +1,17 @@
 #include "SFMLUtilities.h"
-#include <random>
-#include <chrono>
+#include <iostream>
 
 namespace zmc
 {
+SFMLUtilities::SFMLUtilities(unsigned int seed)
+    : mSeed(seed)
+    , eng(mSeed)
+{
+}
+
 SFMLUtilities::SFMLUtilities()
+    : mSeed((unsigned int)std::chrono::high_resolution_clock::now().time_since_epoch().count())
+    , eng(mSeed)
 {
 }
 
@@ -61,10 +68,14 @@ const sf::IntRect SFMLUtilities::getScaledTextureRect(const sf::Sprite &sprite)
 
 int SFMLUtilities::generateRandomNumber(int start, int end)
 {
-    auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
-    std::mt19937 eng((unsigned int)seed);
     std::uniform_int_distribution<> distr(start, end);
     return distr(eng);
+}
+
+void SFMLUtilities::setSeedForRandomNumberGeneration(unsigned int seed)
+{
+    mSeed = seed;
+    eng.seed(mSeed);
 }
 
 sf::Vector2f SFMLUtilities::getFitToAlignScale(sf::Vector2u textureSize, sf::Vector2u containerSize)
