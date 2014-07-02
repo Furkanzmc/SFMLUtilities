@@ -24,14 +24,15 @@ sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Sprit
 
 sf::Vector2f SFMLUtilities::getCenterPosition(sf::Vector2u parentSize, sf::Vector2u spriteSize)
 {
-    sf::Vector2f vector((int)parentSize.x / 2 - spriteSize.x / 2 , (int)parentSize.y / 2 - spriteSize.y / 2);
+    sf::Vector2f vector((float)parentSize.x / 2 - (float)spriteSize.x / 2 , (float)parentSize.y / 2 - (float)spriteSize.y / 2);
     return vector;
 }
 
 sf::Vector2u SFMLUtilities::getScaledSize(const sf::Sprite &sprite)
 {
     sf::Vector2u vector;
-    vector = sf::Vector2u(sprite.getTexture()->getSize().x  * sprite.getScale().x , sprite.getTexture()->getSize().y * sprite.getScale().y);
+    vector = sf::Vector2u(sprite.getTexture()->getSize().x  * (unsigned int)sprite.getScale().x
+                          , sprite.getTexture()->getSize().y * (unsigned int)sprite.getScale().y);
     return vector;
 }
 
